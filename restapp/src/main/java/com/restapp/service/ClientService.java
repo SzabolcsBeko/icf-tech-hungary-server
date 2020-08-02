@@ -7,12 +7,12 @@ import com.restapp.entity.Client;
 
 public interface ClientService {
 
+	public Client getClientById(Long clientId);
+	
+	public Client getClientByNameAndPassword(String name, String password);
+	
 	public List<Client> getAllClients();
-
-	public Client getClient(Long clientId);
 	
-	public void saveClient(Client client);
-	
-	public void updateClient(Client client);
+	public void insertClient(Client client);
 	
 }

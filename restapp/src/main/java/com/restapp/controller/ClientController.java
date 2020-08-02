@@ -28,39 +28,25 @@ public class ClientController {
 		this.service = clientService;
 	}
 
+	@GetMapping("/clients/{clientId}")
+	public Client getClientById(@PathVariable(name = "clientId") Long clientId) {
+		return service.getClientById(clientId);
+	}
+	
+	@GetMapping("/clients/name/{clientName}/password/{password}")
+	public Client getClientByNameAndPassword(@PathVariable(name = "clientName") String clientName, @PathVariable(name = "password") String password) {
+		return service.getClientByNameAndPassword(clientName, password);
+	}
+	
 	@GetMapping("/clients")
-	public List<Client> getClients() {
+	public List<Client> getAllClients() {
 		List<Client> clients = service.getAllClients();
 		return clients;
 	}
 
-	@GetMapping("/clients/{clientId}")
-	public Client getClient(@PathVariable(name = "clientId") Long clientId) {
-		return service.getClient(clientId);
-	}
-
-	@GetMapping("/clients/name/{clientName}")
-	public Client getClient(@PathVariable(name = "clientName") String clientName) {
-		List<Client> result = service.getAllClients().stream().filter(c -> c.getName().equals(clientName)).limit(2)
-				.collect(Collectors.toList());
-		if (result.size() != 1) {
-			throw new IllegalStateException("Expected exactly one client but got " + result);
-		}
-		return result.get(0);
-	}
-
-	@PostMapping("/clients/id/{id}")
-	public void saveTransaction(Client client) {
-		service.saveClient(client);
-		System.out.println("Client Saved Successfully");
-	}
-
-	@PutMapping("/clients/{id}")
-	public void updateClient(@PathVariable(name = "id") Long id, @RequestBody Client client) {
-		Client clnt = service.getClient(id);
-		if (clnt != null) {
-			service.updateClient(client);
-		}
+	@PostMapping("/clients")
+	public void insertClient(@RequestBody Client client) {
+		service.insertClient(client);
 	}
 
 }

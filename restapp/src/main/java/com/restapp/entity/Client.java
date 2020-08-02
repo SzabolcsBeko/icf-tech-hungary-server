@@ -2,14 +2,10 @@ package com.restapp.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.restapp.role.Role;
 
 @Entity
 @Table(name = "CLIENT")
@@ -28,21 +24,20 @@ public class Client {
 	@Column(name = "LASTLOGIN")
 	private String lastLogin;
 
-	@Column(name = "ROLE")
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	@Column(name = "ROLES")
+	private String roles;
 
 	public Client() {
 		super();
 	}
 
-	public Client(Long id, String name, String password, String lastLogin, Role role) {
+	public Client(Long id, String name, String password, String lastLogin, String roles) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.lastLogin = lastLogin;
-		this.role = role;
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -77,18 +72,18 @@ public class Client {
 		this.lastLogin = lastLogin;
 	}
 
-	public Role getRole() {
-		return role;
+	public String getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", name=" + name + ", password=" + password + ", lastLogin=" + lastLogin
-				+ ", role=" + role + "]";
+				+ ", roles=" + roles + "]";
 	}
 
 }
