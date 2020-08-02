@@ -34,7 +34,7 @@ public class ClientServiceImpl implements ClientService {
 		if(clients.size() > 1) {
 			List<Client> largestTwo = clients.stream().sorted(Comparator.comparingLong(Client::getId)
 					.reversed()).limit(2).collect(Collectors.toList());
-			result = largestTwo.get(0);
+			result = largestTwo.get(1);
 		}
 		else if(clients.size() == 1) {
 			result = clients.get(0);
