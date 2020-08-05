@@ -1,4 +1,5 @@
 # icf-tech-hungary-server
+Server application for ICF TECH Hugary Kft.
 
 It is a Spring Boot Application with REST endpoints.
 
