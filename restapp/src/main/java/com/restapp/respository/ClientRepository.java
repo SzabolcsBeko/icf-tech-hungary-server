@@ -19,7 +19,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	Client findClientById(@Param("id") Long id);
 	
 	@Query(value = "SELECT * FROM Client c WHERE c.name = :name AND c.password = :password", nativeQuery = true)
-	List<Client> findClinetByNameAndPassword(@Param("name") String name, @Param("password") String password);
+	List<Client> findClinetsByNameAndPassword(@Param("name") String name, @Param("password") String password);
 	
 	@Query(value = "SELECT * FROM Client ORDER BY id", nativeQuery = true)
 	List<Client> findAllClients(String id);
@@ -30,5 +30,4 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	    "INSERT INTO Client (name, password, lastLogin, roles) VALUES (:name, :passwrd, :lastLogin, :roles)", nativeQuery = true)
 	void insertClient(@Param("name") String name, @Param("passwrd") String passwrd, @Param("lastLogin") String lastLogin, @Param("roles") String roles);
 	
-
 }

@@ -3,6 +3,8 @@ package com.restapp.service;
 import java.util.List;
 
 import com.restapp.entity.Client;
+import com.restapp.recaptcha.LoginRequest;
+import com.restapp.recaptcha.LoginResponse;
 
 
 public interface ClientService {
@@ -15,4 +17,5 @@ public interface ClientService {
 	
 	public void insertClient(Client client);
 	
+	public LoginResponse login(LoginRequest loginRequest);
 }
